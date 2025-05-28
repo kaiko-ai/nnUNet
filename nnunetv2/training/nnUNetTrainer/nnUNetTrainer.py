@@ -971,6 +971,7 @@ class nnUNetTrainer(object):
         self.print_to_log_file(
             f"Current learning rate: {np.round(self.optimizer.param_groups[0]['lr'], decimals=5)}")
         # lrs are the same for all workers so we don't need to gather them in case of DDP training
+        raise Exception("DEBUG")
         self.logger.log('lrs', self.optimizer.param_groups[0]['lr'], self.current_epoch)
 
     def train_step(self, batch: dict) -> dict:
