@@ -714,7 +714,6 @@ class nnUNetTrainer(object):
             ignore_axes = None
 
         print("DEBUG: DISABLED ALL TRANSFORMS")
-        raise Exception("Testing, disabled all transforms")
         # transforms.append(
         #     SpatialTransform(
         #         patch_size_spatial, patch_center_dist_from_border=0, random_crop=False, p_elastic_deform=0,
@@ -971,7 +970,6 @@ class nnUNetTrainer(object):
         self.print_to_log_file(
             f"Current learning rate: {np.round(self.optimizer.param_groups[0]['lr'], decimals=5)}")
         # lrs are the same for all workers so we don't need to gather them in case of DDP training
-        raise Exception("DEBUG")
         self.logger.log('lrs', self.optimizer.param_groups[0]['lr'], self.current_epoch)
 
     def train_step(self, batch: dict) -> dict:
