@@ -714,6 +714,7 @@ class nnUNetTrainer(object):
             ignore_axes = None
 
         print("DEBUG: DISABLED ALL TRANSFORMS")
+        raise Exception("Testing, disabled all transforms")
         # transforms.append(
         #     SpatialTransform(
         #         patch_size_spatial, patch_center_dist_from_border=0, random_crop=False, p_elastic_deform=0,
