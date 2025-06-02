@@ -12,6 +12,7 @@ class nnUNetTrainerFM(nnUNetTrainer):
     def __init__(self, plans: dict, configuration: str, fold: int, dataset_json: dict, device=None):
         super().__init__(plans, configuration, fold, dataset_json, device)
 
+        self.configuration_manager.network_arch_class_name = "voco_b"
         self.configuration_manager.patch_size = [96, 96, 96]
 
     @override
