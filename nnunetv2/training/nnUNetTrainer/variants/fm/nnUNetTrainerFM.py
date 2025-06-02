@@ -42,3 +42,8 @@ class nnUNetTrainerFM(nnUNetTrainer):
     @override
     def set_deep_supervision_enabled(self, enabled: bool):
         pass
+
+    @override
+    def _do_i_compile(self) -> bool:
+        # Disable torch.compile for custom architecture to avoid symbolic tracing issues
+        return False
