@@ -37,4 +37,9 @@ class nnUNetTrainerFM(nnUNetTrainer):
                 raise NotImplementedError("Architecture is not implemented yet.")
             case _:
                 raise ValueError(f"Unknown architecture class name: {architecture_class_name}")
+
+    @override
+    def set_deep_supervision_enabled(self, enabled: bool):
+        pass
+
                 
