@@ -48,9 +48,9 @@ class EncoderDecoder(nn.Module):
         """
         super().__init__()
 
-        self._encoder = encoder
-        self._decoder = decoder
-        self._inferer = inferer
+        self.encoder = encoder
+        self.decoder = decoder
+        self.inferer = inferer
 
     def forward_networks(self, tensor: torch.Tensor) -> torch.Tensor:
         """Passes the input tensor through the encoder and decoder.
@@ -61,8 +61,8 @@ class EncoderDecoder(nn.Module):
         Returns:
             Output tensor after encoding and decoding.
         """
-        patch_embeddings = self._encoder(tensor)
-        return self._decoder(patch_embeddings)
+        patch_embeddings = self.encoder(tensor)
+        return self.decoder(patch_embeddings)
 
     def forward(self, tensor: torch.Tensor) -> torch.Tensor:
         """Defines the forward pass of the network.
@@ -75,7 +75,7 @@ class EncoderDecoder(nn.Module):
 
         Returns: Output tensor after processing.
         """
-        if not self.training and self._inferer:
-            return self._inferer(inputs=tensor, network=self.forward_networks)
+        if not self.training and self.inferer:
+            return self.inferer(inputs=tensor, network=self.forward_networks)
 
         return self.forward_networks(tensor)

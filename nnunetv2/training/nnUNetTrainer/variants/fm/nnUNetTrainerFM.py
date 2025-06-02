@@ -14,6 +14,7 @@ class nnUNetTrainerFM(nnUNetTrainer):
 
         self.configuration_manager.configuration['architecture']['network_class_name'] = "voco_b"
         self.configuration_manager.configuration['patch_size'] = [96, 96, 96]
+        self.enable_deep_supervision = False
 
     @override
     def build_network_architecture(self, architecture_class_name: str,
@@ -41,5 +42,3 @@ class nnUNetTrainerFM(nnUNetTrainer):
     @override
     def set_deep_supervision_enabled(self, enabled: bool):
         pass
-
-                
