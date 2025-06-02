@@ -15,6 +15,8 @@ class nnUNetTrainerFM(nnUNetTrainer):
         self.configuration_manager.configuration['architecture']['network_class_name'] = "voco_b"
         self.configuration_manager.configuration['patch_size'] = [96, 96, 96]
         self.enable_deep_supervision = False
+        
+        self.freeze_encoder = True  # Freeze the encoder by default
 
     @override
     def build_network_architecture(self, architecture_class_name: str,
@@ -33,6 +35,7 @@ class nnUNetTrainerFM(nnUNetTrainer):
                         feature_size=48,
                         spatial_dims=3,
                     ),
+                    freeze_encoder=self.freeze_encoder,
                 )
             case "coralbay":
                 raise NotImplementedError("Architecture is not implemented yet.")

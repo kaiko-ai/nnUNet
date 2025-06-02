@@ -17,6 +17,7 @@ class EncoderDecoder(nn.Module):
         encoder: nn.Module,
         decoder: nn.Module,
         inferer: Inferer | None = None,
+        freeze_encoder: bool = False,
     ) -> None:
         """Build the encoder-decoder network.
 
@@ -51,6 +52,11 @@ class EncoderDecoder(nn.Module):
         self.encoder = encoder
         self.decoder = decoder
         self.inferer = inferer
+
+        if freeze_encoder:
+            for param in self.encoder.parameters():
+                param.requires_grad = False
+            self.encoder.eval()
 
     def forward_networks(self, tensor: torch.Tensor) -> torch.Tensor:
         """Passes the input tensor through the encoder and decoder.
