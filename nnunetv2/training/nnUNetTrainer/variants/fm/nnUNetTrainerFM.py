@@ -17,6 +17,7 @@ class nnUNetTrainerFM(nnUNetTrainer):
         self.enable_deep_supervision = False
         
         self.freeze_encoder = True  # Freeze the encoder by default
+        self.num_epochs = 2000
 
     @override
     def build_network_architecture(self, architecture_class_name: str,
