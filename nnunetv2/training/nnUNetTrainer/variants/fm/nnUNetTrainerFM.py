@@ -16,7 +16,7 @@ class nnUNetTrainerFM(nnUNetTrainer):
         self.configuration_manager.configuration['patch_size'] = [96, 96, 96]
         self.enable_deep_supervision = False
         
-        self.freeze_encoder = True  # Freeze the encoder by default
+        self.freeze_encoder = False  # Freeze the encoder by default
         self.num_epochs = 2000
 
     @override
